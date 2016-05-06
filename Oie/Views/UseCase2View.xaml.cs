@@ -1,5 +1,4 @@
-﻿using Oie.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,17 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Oie
+namespace Oie.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for UseCase2View.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class UseCase2View : UserControl
     {
-        public MainWindow()
+        public UseCase2View()
         {
-            this.DataContext = new MainWindowViewModel();
-            this.InitializeComponent();
+            InitializeComponent();
         }
     }
 }

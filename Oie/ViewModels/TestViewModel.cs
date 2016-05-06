@@ -1,6 +1,8 @@
 ﻿using Oie.DataAccess;
+using Oie.Infrastructure;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,23 +14,23 @@ namespace Oie.ViewModels
     {
         public TestViewModel()
         {
-            this.TestCommand = new MyCommand();
+            this.DbContext = new OieDbContext();
+            this.TestCommand = new DelegateCommand(this.TestEf);
         }
 
         public ICommand TestCommand { get; set; }
 
-        private class MyCommand : ICommand
+        private OieDbContext DbContext { get; set; }
+
+        public void TestEf()
         {
-            public event EventHandler CanExecuteChanged;
+            var students = this.DbContext
+                .Students
+                .Where(dept => dept.FirstName.StartsWith("J"));
 
-            public bool CanExecute(object parameter)
+            foreach(var student in students)
             {
-                return true;
-            }
-
-            public void Execute(object parameter)
-            {
-                new MySqlDatabase().Test();
+                Debug.WriteLine(student.EmailPrimary);
             }
         }
     }

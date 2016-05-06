@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 using System.Diagnostics;
+using System.Data;
+using Oie.DataAccess.DbSets;
 
 namespace Oie.DataAccess
 {
@@ -16,14 +18,16 @@ namespace Oie.DataAccess
             var cs = "server=labdb.acs.uwosh.edu;uid=thomaj46;pwd=0455446;database=thomaj46;";
             using (var con = new MySqlConnection(cs))
             {
-                var query = "select * from fakedepts";
+                var query = "select * from fakedepts where name = 'Urology'";
                 con.Open();
                 var command = new MySqlCommand(query, con);
-                MySqlDataReader reader = command.ExecuteReader();
+                var adapter = new MySqlDataAdapter(command);
+                var dataset = new DataSet();
+                adapter.Fill(dataset);
 
-                while (reader.Read())
+                foreach (var row in dataset.Tables[0].AsEnumerable())
                 {
-                    Debug.WriteLine(reader[0]);
+                    Debug.WriteLine(row.Field<string>("name"));
                 }
             }
         }

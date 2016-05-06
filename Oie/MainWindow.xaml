@@ -4,9 +4,24 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Oie"
+        xmlns:views="clr-namespace:Oie.Views"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        <Button Command="{Binding Path=TestCommand}" Content="Test" />
-    </Grid>
+        Title="MainWindow" Height="600" Width="900">
+    <StackPanel>
+        <DockPanel VerticalAlignment="Top" HorizontalAlignment="Stretch">
+            <Button HorizontalAlignment="Left" Content="Use Case 1" Command="{Binding Path=UseCase1Command}" />
+            <Button HorizontalAlignment="Right" Content="Use Case 2" Command="{Binding Path=UseCase2Command}" />
+        </DockPanel>
+        <Grid>
+            <ContentControl Visibility="{Binding Path=TestViewVisibility}">
+                <views:TestView />
+            </ContentControl>
+            <ContentControl Visibility="{Binding Path=UseCase1ViewVisibility}">
+                <views:UseCase1View />
+            </ContentControl>
+            <ContentControl Visibility="{Binding Path=UseCase2ViewVisibility}">
+                <views:UseCase2View />
+            </ContentControl>
+        </Grid>
+    </StackPanel>
 </Window>

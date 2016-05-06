@@ -22,7 +22,7 @@ namespace Oie
     {
         public MainWindow()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
     }
 }

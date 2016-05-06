@@ -5,9 +5,25 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
+        <StackPanel Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">
             <Button Command="{Binding Path=TestCommand}" Content="Test" />
         </StackPanel>
+
+        <ListView Grid.Row="1" ItemsSource="{Binding Path=Students}" ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Path=Id}" />
+                    <GridViewColumn Header="First" DisplayMemberBinding="{Binding Path=FirstName}" />
+                    <GridViewColumn Header="Last" DisplayMemberBinding="{Binding Path=LastName}" />
+                    <GridViewColumn Header="Email" DisplayMemberBinding="{Binding Path=EmailPrimary}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </UserControl>

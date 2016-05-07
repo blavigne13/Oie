@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Oie.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,7 +23,8 @@ namespace Oie.Views
     {
         public UseCase2View()
         {
-            InitializeComponent();
+            this.DataContext = new UseCase2ViewModel();
+            this.InitializeComponent();
         }
     }
 }

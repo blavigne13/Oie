@@ -26,5 +26,9 @@ namespace Oie.Views
             this.DataContext = new UseCase16ViewModel();
             this.InitializeComponent();
         }
+        
+        private void ascendingRadio_Checked(object sender, RoutedEventArgs e)
+        {
+        }
     }
 }

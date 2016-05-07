@@ -5,7 +5,25 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        <TextBlock Text="USE CASE 2" />
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <Button Content="Search" Command="{Binding Path=SearchCommand}" />
+        </StackPanel>
+        <ListView Grid.Row="1" ItemsSource="{Binding Path=AirportPickups}" ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="First" DisplayMemberBinding="{Binding Path=Student.FirstName}" />
+                    <GridViewColumn Header="Last" DisplayMemberBinding="{Binding Path=Student.LastName}" />
+                    <GridViewColumn Header="Email" DisplayMemberBinding="{Binding Path=Student.EmailPrimary}" />
+                    <GridViewColumn Header="Arrival" DisplayMemberBinding="{Binding Path=Arrival}" />
+                    <GridViewColumn Header="Arrival Date Time" DisplayMemberBinding="{Binding Path=ArrivalDateTime}" />
+                    <GridViewColumn Header="Comments" DisplayMemberBinding="{Binding Path=Comments}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </UserControl>

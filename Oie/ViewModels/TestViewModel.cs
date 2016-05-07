@@ -23,19 +23,27 @@ namespace Oie.ViewModels
 
         public ICommand TestCommand { get; set; }
 
-        public ObservableCollection<Student> Students { get; set; }
+        public ICollection<Student> Students { get; set; }
+
+        public ObservableCollection<Student> OrderedStudents { get; set; }
 
         private OieDbContext DbContext { get; set; }
 
         public void TestEf()
         {
-            IEnumerable<Student> students = this.DbContext.Students.Take(50).ToList();
-            this.Students.Clear();
-            this.Students.AddRange(students);
-            foreach(var student in students)
+            this.LoadData(students => students.OrderBy(s => s.MajorPrimary));
+            this.LoadData(students => students.OrderByDescending(s => s.MajorPrimary));
+        }
+
+        public void LoadData(Func<IEnumerable<Student>, IOrderedEnumerable<Student>> orderFunc)
+        {
+            if (!this.Students.Any())
             {
-                Debug.WriteLine(student.EmailPrimary);
+                this.Students = this.DbContext.Students.Take(50).ToList();
             }
+
+            this.OrderedStudents.Clear();
+            this.OrderedStudents.AddRange(orderFunc(this.Students));
         }
     }
 }

@@ -15,7 +15,8 @@ namespace Oie.DataAccess
     {
         public void Test()
         {
-            var cs = "server=labdb.acs.uwosh.edu;uid=thomaj46;pwd=0455446;database=thomaj46;";
+            //var cs = "server=labdb.acs.uwosh.edu;uid=thomaj46;pwd=0455446;database=thomaj46;";
+            var cs = "server=localhost;uid=thomaj46;pwd=0455446;database=thomaj46;";
             using (var con = new MySqlConnection(cs))
             {
                 var query = "select * from fakedepts where name = 'Urology'";

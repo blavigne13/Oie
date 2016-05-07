@@ -18,5 +18,7 @@ namespace Oie.DataAccess.DbSets
         public string LastName { get; set; }
 
         public string EmailPrimary { get; set; }
+
+        public string MajorPrimary { get; set; }
     }
 }

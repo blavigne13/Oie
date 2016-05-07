@@ -17,7 +17,7 @@ using System.Windows.Shapes;
 namespace Oie.Views
 {
     /// <summary>
-    /// Interaction logic for UseCase1View.xaml
+    /// Interaction logic for UseCase16View.xaml
     /// </summary>
     public partial class UseCase16View : UserControl
     {

@@ -22,6 +22,8 @@ namespace Oie.ViewModels
         {
             this.UseCase16ViewVisibility = Visibility.Collapsed;
             this.UseCase2ViewVisibility = Visibility.Collapsed;
+            this.TestViewVisibility = Visibility.Collapsed;
+
             this.UseCase16Command = new DelegateCommand(() =>
             {
                 this.UseCase16ViewVisibility = Visibility.Visible;

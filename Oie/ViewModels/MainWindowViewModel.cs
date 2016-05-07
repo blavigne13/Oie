@@ -15,16 +15,16 @@ namespace Oie.ViewModels
     public class MainWindowViewModel : BindableBase
     {
         private Visibility testViewVisibilty;
-        private Visibility useCase1ViewVisibilty;
+        private Visibility useCase16ViewVisibilty;
         private Visibility useCase2ViewVisibilty;
 
         public MainWindowViewModel()
         {
-            this.UseCase1ViewVisibility = Visibility.Collapsed;
+            this.UseCase16ViewVisibility = Visibility.Collapsed;
             this.UseCase2ViewVisibility = Visibility.Collapsed;
-            this.UseCase1Command = new DelegateCommand(() =>
+            this.UseCase16Command = new DelegateCommand(() =>
             {
-                this.UseCase1ViewVisibility = Visibility.Visible;
+                this.UseCase16ViewVisibility = Visibility.Visible;
                 this.UseCase2ViewVisibility = Visibility.Collapsed;
                 this.TestViewVisibility = Visibility.Collapsed;
             });
@@ -32,12 +32,12 @@ namespace Oie.ViewModels
             this.UseCase2Command = new DelegateCommand(() =>
             {
                 this.UseCase2ViewVisibility = Visibility.Visible;
-                this.UseCase1ViewVisibility = Visibility.Collapsed;
+                this.UseCase16ViewVisibility = Visibility.Collapsed;
                 this.TestViewVisibility = Visibility.Collapsed;
             });
         }
 
-        public ICommand UseCase1Command { get; set; }
+        public ICommand UseCase16Command { get; set; }
 
         public ICommand UseCase2Command { get; set; }
 
@@ -54,16 +54,16 @@ namespace Oie.ViewModels
             }
         }
 
-        public Visibility UseCase1ViewVisibility
+        public Visibility UseCase16ViewVisibility
         {
             get
             {
-                return this.useCase1ViewVisibilty;
+                return this.useCase16ViewVisibilty;
             }
 
             set
             {
-                this.SetProperty(ref this.useCase1ViewVisibilty, value);
+                this.SetProperty(ref this.useCase16ViewVisibilty, value);
             }
         }
 

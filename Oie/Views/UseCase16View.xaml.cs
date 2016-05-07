@@ -19,12 +19,12 @@ namespace Oie.Views
     /// <summary>
     /// Interaction logic for UseCase1View.xaml
     /// </summary>
-    public partial class UseCase1View : UserControl
+    public partial class UseCase16View : UserControl
     {
-        public UseCase1View()
+        public UseCase16View()
         {
-            this.DataContext = new UseCase1ViewModel();
-            InitializeComponent();
+            this.DataContext = new UseCase16ViewModel();
+            this.InitializeComponent();
         }
     }
 }

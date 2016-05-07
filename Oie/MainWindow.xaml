@@ -21,8 +21,8 @@
             <ContentControl Visibility="{Binding Path=TestViewVisibility}">
                 <views:TestView />
             </ContentControl>
-            <ContentControl Visibility="{Binding Path=UseCase1ViewVisibility}">
-                <views:UseCase1View />
+            <ContentControl Visibility="{Binding Path=UseCase16ViewVisibility}">
+                <views:UseCase16View />
             </ContentControl>
             <ContentControl Visibility="{Binding Path=UseCase2ViewVisibility}">
                 <views:UseCase2View />

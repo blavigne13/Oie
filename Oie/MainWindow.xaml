@@ -14,7 +14,7 @@
         </Grid.RowDefinitions>
         <DockPanel Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Stretch">
             <Button HorizontalAlignment="Left" Content="Use Case 6" Command="{Binding Path=UseCase2Command}" />
-            <Button HorizontalAlignment="Right" Content="Use Case 16" Command="{Binding Path=UseCase16Command}" />
+            <Button HorizontalAlignment="Left" Content="Use Case 16" Command="{Binding Path=UseCase16Command}" />
         </DockPanel>
         
         <Grid Grid.Row="1">

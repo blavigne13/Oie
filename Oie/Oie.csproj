@@ -86,9 +86,10 @@
     <Compile Include="DataAccess\MySqlDatabase.cs" />
     <Compile Include="DataAccess\OieDbContext.cs" />
     <Compile Include="Infrastructure\DelegateCommand.cs" />
+    <Compile Include="Models\GroupCount.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\TestViewModel.cs" />
-	<Compile Include="ViewModels\UseCase2ViewModel.cs" />
+    <Compile Include="ViewModels\UseCase6ViewModel.cs" />
     <Compile Include="ViewModels\UseCase16ViewModel.cs" />
     <Compile Include="Views\TestView.xaml.cs">
       <DependentUpon>TestView.xaml</DependentUpon>
@@ -96,8 +97,8 @@
     <Compile Include="Views\UseCase16View.xaml.cs">
       <DependentUpon>UseCase16View.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\UseCase2View.xaml.cs">
-      <DependentUpon>UseCase2View.xaml</DependentUpon>
+    <Compile Include="Views\UseCase6View.xaml.cs">
+      <DependentUpon>UseCase6View.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -119,7 +120,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\UseCase2View.xaml">
+    <Page Include="Views\UseCase6View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -152,9 +153,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

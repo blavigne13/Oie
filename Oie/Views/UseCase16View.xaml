@@ -12,7 +12,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
@@ -27,7 +27,7 @@
                    Margin="5" 
                    HorizontalAlignment="Left" 
                    VerticalAlignment="Center" />
-            <TextBox Text="{Binding MaxResults}" 
+            <TextBox Text="{Binding MaxResults, UpdateSourceTrigger=PropertyChanged}" 
                      ToolTip="Enter the desired number of majors, or 0 for all majors."
                      HorizontalAlignment="Left" 
                      VerticalAlignment="Center" />
@@ -36,7 +36,7 @@
         <ListView ItemsSource="{Binding Path=DescendingMajors}" Grid.Row="1" Grid.Column="0">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Major (popular)" DisplayMemberBinding="{Binding Path=Major}" />
+                    <GridViewColumn Header="Major (popular)" DisplayMemberBinding="{Binding Path=Name}" />
                     <GridViewColumn Header="Count" DisplayMemberBinding="{Binding Path=Count}" />
                 </GridView>
             </ListView.View>
@@ -45,7 +45,7 @@
         <ListView ItemsSource="{Binding Path=AscendingMajors}" Grid.Row="1" Grid.Column="1">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Major (unpopular)" DisplayMemberBinding="{Binding Path=Major}" />
+                    <GridViewColumn Header="Major (unpopular)" DisplayMemberBinding="{Binding Path=Name}" />
                     <GridViewColumn Header="Count" DisplayMemberBinding="{Binding Path=Count}" />
                 </GridView>
             </ListView.View>

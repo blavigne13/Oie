@@ -12,16 +12,19 @@ using System.Windows.Input;
 
 namespace Oie.ViewModels
 {
-    public class UseCase2ViewModel
+    public class UseCase6ViewModel
     {
-        public UseCase2ViewModel()
+        public UseCase6ViewModel()
         {
             this.DbContext = new OieDbContext();
             this.AirportPickups = new ObservableCollection<AirportPickup>();
             this.SearchCommand = new DelegateCommand(this.Search);
+            this.ClearCommand = new DelegateCommand(this.Clear);
         }
 
         public ICommand SearchCommand { get; set; }
+
+        public ICommand ClearCommand { get; set; }
 
         public ObservableCollection<AirportPickup> AirportPickups { get; set; }
 
@@ -39,6 +42,11 @@ namespace Oie.ViewModels
 
             this.AirportPickups.Clear();
             this.AirportPickups.AddRange(airportPickups);
+        }
+
+        private void Clear()
+        {
+            this.AirportPickups.Clear();
         }
     }
 }

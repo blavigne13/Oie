@@ -1,6 +1,8 @@
 ﻿using Oie.DataAccess;
 using Oie.DataAccess.DbSets;
 using Oie.Infrastructure;
+using Oie.Models;
+using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,8 +15,10 @@ using System.Windows.Input;
 
 namespace Oie.ViewModels
 {
-    class UseCase16ViewModel
+    public class UseCase16ViewModel
     {
+        private int maxResults;
+
         public UseCase16ViewModel()
         {
             this.DbContext = new OieDbContext();
@@ -23,14 +27,36 @@ namespace Oie.ViewModels
             this.Majors = null;
             this.AscendingMajors = new ObservableCollection<GroupCount>();
             this.DescendingMajors = new ObservableCollection<GroupCount>();
+            this.MaxResults = 10;
         }
 
         private OieDbContext DbContext { get; set; }
+
         public ICommand UseCase16Command { get; set; }
+        
         private IEnumerable<GroupCount> Majors { get; set; }
+        
         public ObservableCollection<GroupCount> AscendingMajors { get; set; }
+        
         public ObservableCollection<GroupCount> DescendingMajors { get; set; }
-        public int MaxResults { get; set; } = 10;
+        
+        public int MaxResults
+        {
+            get
+            {
+                return this.maxResults;
+            }
+
+            set
+            {
+                var old = this.maxResults;
+                this.maxResults = value;
+                if (old != this.maxResults)
+                {
+                    this.RefreshCollections();
+                }
+            }
+        }
 
         public void GetData()
         {
@@ -39,25 +65,25 @@ namespace Oie.ViewModels
                 this.Majors = this
                 .DbContext
                 .Students
-                .GroupBy(s => s.MajorPrimary)
-                .Select(g => new GroupCount { Major = g.Key, Count = g.Count() });
+                .GroupBy(student => student.MajorPrimary)
+                .Select(group => new GroupCount { Name = group.Key, Count = group.Count() })
+                .OrderBy(gc => gc.Count);
+
+                this.RefreshCollections();
             }
-
-            AscendingMajors.Clear();
-            this.AscendingMajors.AddRange(Majors
-                .OrderBy(gc => gc.Count)
-                .Take(MaxResults > 0 ? MaxResults : int.MaxValue));
-
-            DescendingMajors.Clear();
-            this.DescendingMajors.AddRange(Majors
-                .OrderByDescending(gc => gc.Count)
-                .Take(MaxResults > 0 ? MaxResults : int.MaxValue));
         }
 
-        public class GroupCount
+        public void RefreshCollections()
         {
-            public string Major { get; set; }
-            public int Count { get; set; }
+            if (this.Majors == null)
+            {
+                return;
+            }
+
+            this.AscendingMajors.Clear();
+            this.DescendingMajors.Clear();
+            this.AscendingMajors.AddRange(this.Majors.Take(MaxResults > 0 ? MaxResults : int.MaxValue));
+            this.DescendingMajors.AddRange(this.Majors.Reverse().Take(MaxResults > 0 ? MaxResults : int.MaxValue));
         }
     }
 }

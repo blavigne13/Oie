@@ -16,24 +16,24 @@ namespace Oie.ViewModels
     {
         private Visibility testViewVisibilty;
         private Visibility useCase16ViewVisibilty;
-        private Visibility useCase2ViewVisibilty;
+        private Visibility useCase6ViewVisibilty;
 
         public MainWindowViewModel()
         {
             this.UseCase16ViewVisibility = Visibility.Collapsed;
-            this.UseCase2ViewVisibility = Visibility.Collapsed;
+            this.UseCase6ViewVisibility = Visibility.Collapsed;
             this.TestViewVisibility = Visibility.Collapsed;
 
             this.UseCase16Command = new DelegateCommand(() =>
             {
                 this.UseCase16ViewVisibility = Visibility.Visible;
-                this.UseCase2ViewVisibility = Visibility.Collapsed;
+                this.UseCase6ViewVisibility = Visibility.Collapsed;
                 this.TestViewVisibility = Visibility.Collapsed;
             });
 
-            this.UseCase2Command = new DelegateCommand(() =>
+            this.UseCase6Command = new DelegateCommand(() =>
             {
-                this.UseCase2ViewVisibility = Visibility.Visible;
+                this.UseCase6ViewVisibility = Visibility.Visible;
                 this.UseCase16ViewVisibility = Visibility.Collapsed;
                 this.TestViewVisibility = Visibility.Collapsed;
             });
@@ -41,7 +41,7 @@ namespace Oie.ViewModels
 
         public ICommand UseCase16Command { get; set; }
 
-        public ICommand UseCase2Command { get; set; }
+        public ICommand UseCase6Command { get; set; }
 
         public Visibility TestViewVisibility
         {
@@ -69,16 +69,16 @@ namespace Oie.ViewModels
             }
         }
 
-        public Visibility UseCase2ViewVisibility
+        public Visibility UseCase6ViewVisibility
         {
             get
             {
-                return this.useCase2ViewVisibilty;
+                return this.useCase6ViewVisibilty;
             }
 
             set
             {
-                this.SetProperty(ref this.useCase2ViewVisibilty, value);
+                this.SetProperty(ref this.useCase6ViewVisibilty, value);
             }
         }
     }

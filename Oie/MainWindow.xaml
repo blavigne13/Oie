@@ -15,7 +15,7 @@
 
         <DockPanel Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Stretch">
             <Button Content=" Use Case 6 " 
-                    Command="{Binding Path=UseCase2Command}" 
+                    Command="{Binding Path=UseCase6Command}" 
                     ToolTip="Query upcoming flight information"
                     HorizontalAlignment="Left" 
                     Margin="2"/>
@@ -33,8 +33,8 @@
             <ContentControl Visibility="{Binding Path=UseCase16ViewVisibility}">
                 <views:UseCase16View />
             </ContentControl>
-            <ContentControl Visibility="{Binding Path=UseCase2ViewVisibility}">
-                <views:UseCase2View />
+            <ContentControl Visibility="{Binding Path=UseCase6ViewVisibility}">
+                <views:UseCase6View />
             </ContentControl>
         </Grid>
     </Grid>

@@ -41,15 +41,17 @@ namespace Oie.ViewModels
                 .Students
                 .GroupBy(s => s.MajorPrimary)
                 .Select(g => new GroupCount { Major = g.Key, Count = g.Count() });
-
-                this.AscendingMajors.AddRange(Majors
-                    .OrderBy(gc => gc.Count)
-                    .Take(MaxResults));
-
-                this.DescendingMajors.AddRange(Majors
-                    .OrderByDescending(gc => gc.Count)
-                    .Take(MaxResults));
             }
+
+            AscendingMajors.Clear();
+            this.AscendingMajors.AddRange(Majors
+                .OrderBy(gc => gc.Count)
+                .Take(MaxResults > 0 ? MaxResults : int.MaxValue));
+
+            DescendingMajors.Clear();
+            this.DescendingMajors.AddRange(Majors
+                .OrderByDescending(gc => gc.Count)
+                .Take(MaxResults > 0 ? MaxResults : int.MaxValue));
         }
 
         public class GroupCount
